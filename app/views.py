@@ -1,26 +1,15 @@
 from flask import render_template
 from app import app
-from .forms import LoginForm
+from .forms import LoginForm, SearchForm
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'nickname': 'Miguel'}  # fake user
-    posts = [  # fake array of posts
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
+    form = SearchForm()
     return render_template("index.html",
                            title='Home',
-                           user=user,
-                           posts=posts)
+                           form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

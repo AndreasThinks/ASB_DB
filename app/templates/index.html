@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Hi, {{ user.nickname }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    <h1>Search for Subject</h1>
+<form method="POST" name="SearchForm">
+    First Name: {{form.firstName(size=20)}}
+    Surname: {{form.surname(size=20)}}
+    Date of Birth: {{form.dob(size=10)}}
+    Identifier (CPN, passport number, etc): {{form.identifier(size=30)}}
+<input type="submit" value="Search">
+    </form>
 {% endblock %}

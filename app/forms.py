@@ -9,5 +9,5 @@ class LoginForm(Form):
 class SearchForm(Form):
     firstName = StringField('firstName')
     surname = StringField('surname')
-    dateOfBirth = StringField('dateOfBirth')
+    dob = StringField('dob')
     identifier = StringField('identifier')
