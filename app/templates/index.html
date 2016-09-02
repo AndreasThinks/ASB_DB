@@ -1,11 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Search for Subject</h1>
-<form method="POST" name="SearchForm">
+<form method="POST" action="/index" name="SearchForm">
     First Name: {{form.firstName(size=20)}}
     Surname: {{form.surname(size=20)}}
     Date of Birth: {{form.dob(size=10)}}
     Identifier (CPN, passport number, etc): {{form.identifier(size=30)}}
 <input type="submit" value="Search">
     </form>
+
+<br>
+    subjects:{{subjects}}
+<br>
+{% for subject in subjects %}
+{{subject}}
+{% endfor %}
+
+<div id="search">
+<table border="1" >
+<tr >
+<th >First Name</th><th>Surname</th><th >Date of Birth</th><th >Identifier</th>
+    </tr>
+    {% for subject in subjects%}
+    <tr>
+        {% for att in subject %}
+        <td>{{att}}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+
+    </div>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 {% endblock %}
